@@ -4,7 +4,11 @@ import 'package:platformview_sampler/activity_indicator.dart';
 void main() => runApp(MaterialApp(home: ActivityIndicatorExample()));
 
 class ActivityIndicatorExample extends StatelessWidget {
-  final indicator = UIActivityIndicator();
+  ActivityIndicatorController controller;
+
+  void _onActivityIndicatorControllerWidgetCreated(ActivityIndicatorController _controller) {
+    controller = _controller;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,10 @@ class ActivityIndicatorExample extends StatelessWidget {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
-          indicator,
+          UIActivityIndicator(
+            hexColor: "FF0000",
+            onActivityIndicatorWidgetCreated: _onActivityIndicatorControllerWidgetCreated,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 45.0, top: 0.0, bottom: 50.0, right: 45.0),
             child: new Row(
@@ -23,13 +30,13 @@ class ActivityIndicatorExample extends StatelessWidget {
                 FloatingActionButton(
                   child: Text("Start"),
                   onPressed: () {
-                    indicator.start();
+                    controller.start();
                   },
                 ),
                 new FloatingActionButton(
                   child: Text("Stop"),
                   onPressed: () {
-                    indicator.stop();
+                    controller.stop();
                   },
                 ),
               ],
