@@ -37,6 +37,7 @@ public class UIActivityIndicatorController: NSObject, FlutterPlatformView {
         self.indicator.color = UIColor(hex: hexColor)
         self.indicator.hidesWhenStopped = hidesWhenStopped
 
+        self.viewId = viewId
         self.channel = FlutterMethodChannel(name: "plugins/activity_indicator_\(viewId)", binaryMessenger: binaryMessenger)
 
         self.channel.setMethodCallHandler({
