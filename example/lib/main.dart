@@ -6,7 +6,7 @@ void main() => runApp(MaterialApp(home: ActivityIndicatorExample()));
 class ActivityIndicatorExample extends StatelessWidget {
   ActivityIndicatorController controller;
 
-  void _onActivityIndicatorControllerWidgetCreated(ActivityIndicatorController _controller) {
+  void _onActivityIndicatorControllerCreated(ActivityIndicatorController _controller) {
     controller = _controller;
   }
 
@@ -20,7 +20,7 @@ class ActivityIndicatorExample extends StatelessWidget {
         children: <Widget>[
           UIActivityIndicator(
             hexColor: "FF0000",
-            onActivityIndicatorWidgetCreated: _onActivityIndicatorControllerWidgetCreated,
+            onActivityIndicatorWidgetCreated: _onActivityIndicatorControllerCreated,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 45.0, top: 0.0, bottom: 50.0, right: 45.0),
